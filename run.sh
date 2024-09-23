@@ -2,4 +2,4 @@
 
 : "${DOCKER:=docker}"
 
-${DOCKER} run --init --rm --user $(id -u):$(id -g) -i -t -v$PWD:/project cheerp $@
+${DOCKER} run --init --rm --user $(id -u):$(id -g) --network host -i -t -v$PWD:/project cheerp $@
