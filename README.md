@@ -8,6 +8,10 @@ Build the Docker container first
 
 `./build.sh`
 
+Change the permissions for the "tests" directory, for sharing it between Docker and the host
+
+`chmod 777 tests`
+
 Start the local webserver and keep it up
 
 `./run.sh simple-http-server`
