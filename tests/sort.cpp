@@ -55,7 +55,7 @@ void bubbleSort(std::vector<Data>& v) {
 [[cheerp::jsexport]]
 void run(int size, int max) {
   auto now = std::chrono::system_clock::now().time_since_epoch();
-  int seed = 0;//now.count();
+  int seed = now.count();
   auto v = randomVec(size, max, seed);
   printVec(v, "unsorted", 10);
   bubbleSort(v);
