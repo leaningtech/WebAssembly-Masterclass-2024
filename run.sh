@@ -2,4 +2,4 @@
 
 : "${DOCKER:=docker}"
 
-${DOCKER} run --rm -i -t -v$PWD:/project cheerp $@
+${DOCKER} run --init --rm -i -t -v$PWD:/project cheerp $@
