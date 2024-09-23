@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Cheerp test</title>
+    <script src="test2.js"></script>
+  </head>
+  <body>
+    <input type="text" id="inputValue" value="10"></input>
+    <input type="button" id="compute" value="Increment"></input>
+    <script>
+      function computeValue()
+      {
+        var input = parseInt(inputValue.value);
+        var output = addFunc(input, 1);
+        inputValue.value = output.toString();
+      }
+      compute.onclick = computeValue;
+    </script>
+  </body>
+</html>
