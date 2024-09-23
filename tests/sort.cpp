@@ -7,24 +7,34 @@
 
 #include <cheerp/client.h>
 
-std::vector<int> randomVec(int size, int max, uint32_t seed) {
+struct Data {
+  int a;
+  int b;
+  bool operator<(const Data& other) {
+    if (a<other.a) return true;
+    if (a>other.a) return false;
+    return b < other.b;
+  }
+};
+
+std::vector<Data> randomVec(int size, int max, uint32_t seed) {
   std::mt19937 rng;
   rng.seed(seed);
   std::uniform_int_distribution<int> dist{0, max};
-  std::vector<int> ret(size);
-  std::generate(ret.begin(), ret.end(), [&rng, &dist] { return dist(rng); });
+  std::vector<Data> ret(size);
+  std::generate(ret.begin(), ret.end(), [&rng, &dist] { return Data{dist(rng), dist(rng)}; });
   return ret;
 }
 
 [[cheerp::genericjs]]
-void printVec(const std::vector<int> &v, const std::string& divId, size_t n) {
+void printVec(const std::vector<Data> &v, const std::string& divId, size_t n) {
   auto* pre = client::document.getElementById(divId.c_str());
   pre->set_innerText("");
   auto* s = new client::String();
   for (auto i : v) {
     if (n-- == 0)
       break;
-    s = s->concat(i)->concat("\n");
+    s = s->concat(i.a)->concat(",")->concat(i.b)->concat("\n");
   }
   pre->set_innerText(s);
 }
@@ -32,7 +42,7 @@ void printVec(const std::vector<int> &v, const std::string& divId, size_t n) {
 
 
 [[clang::noinline]]
-void bubbleSort(std::vector<int>& v) {
+void bubbleSort(std::vector<Data>& v) {
   for (size_t i = 0; i < v.size(); i++) {
     for (size_t j = 0; j < i; j++) {
       if (v[i] < v[j]) {
