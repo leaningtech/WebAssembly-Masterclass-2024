@@ -16,7 +16,7 @@ Start the local webserver and keep it up
 
 `./run.sh simple-http-server`
 
-From your browser visit: http://127.0.0.1:8000/tests/test0.html
+From your browser visit: http://127.0.0.1:8000/tests/test.html
 
 ## Compile a test
 
