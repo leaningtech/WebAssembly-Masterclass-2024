@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Cheerp test</title>
+    <script src="sortWasm.js"></script>
+  </head>
+  <body>
+    <input type="text" id="inputSize" value="50000"></input>
+    <input type="text" id="inputMax" value="10000"></input>
+    <input type="button" id="compute" value="Sort"></input>
+    <div id="time">
+    </div>
+    <div>
+        <pre id="unsorted">
+        </pre>
+        <pre id="sorted">
+        </pre>
+    </div>
+    <script>
+      async function init()
+      {
+        await run.promise;
+        compute.onclick = () => {
+          const size = parseInt(inputSize.value);
+          const max = parseInt(inputMax.value);
+          time.innerText = "running...";
+          setTimeout(() =>{
+            const startT = Date.now();
+            run(size, max);
+            time.innerText = `run in ${Date.now()-startT}ms`;
+          }, 0);
+        };
+      }
+      init();
+    </script>
+  </body>
+</html>
