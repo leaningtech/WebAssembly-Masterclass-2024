@@ -14,7 +14,7 @@ Change the permissions for the "tests" directory, for sharing it between Docker 
 
 Start the local webserver and keep it up
 
-`./run.sh simple-http-server`
+`./run.sh simple-http-server --nocache`
 
 From your browser visit: http://127.0.0.1:8000/tests/test.html
 
